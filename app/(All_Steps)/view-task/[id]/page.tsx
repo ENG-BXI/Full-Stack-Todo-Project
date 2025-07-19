@@ -7,12 +7,11 @@ import {Button} from '../../../_components/shadCn/button';
 import {CalendarIcon} from 'lucide-react';
 import {Calendar} from '../../../_Components/shadCn/calendar';
 import {useParams, useRouter} from 'next/navigation';
-import {FormEvent, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {format} from 'date-fns';
 import GetAllCategoryOptions from '../../../_Services/GetAllCategoryOption';
 import GetTaskById from '@/app/_Services/GetTaskById';
 import {MultiSelect, SelectedItems} from '@/app/_Components/MultiSelect';
-import {ITaskWithSelectedCategory} from '@/app/api/tasks/[id]/route';
 
 const Page = () => {
   const params = useParams();
@@ -35,19 +34,7 @@ const Page = () => {
       setExpireDate(new Date(taskData?.expireDate));
     }
   }, [isTaskLoading, isTaskError, taskData]);
-  function handleOnClick(e: FormEvent) {
-    e.preventDefault();
-    if (!title && !description && !category && !priority && !expireDate) return;
-    const formData: ITaskWithSelectedCategory = {
-      title,
-      category,
-      description,
-      expireDate: expireDate!,
-      priority,
-      userId: 'fd8d5e20-c67d-4444-8c63-7b4425db85e6'
-    };
-    editTask({id, formData});
-  }
+
   useEffect(() => {
     if (!isLoading && !isError) setCategoryOption(data ?? []);
   }, [data, isError, isLoading]);
@@ -57,7 +44,7 @@ const Page = () => {
         <CardTitle>Add New Task</CardTitle>
       </CardHeader>
       <CardContent className='flex flex-col gap-y-3'>
-        <form onSubmit={handleOnClick}>
+        <form>
           <label>
             Title*
             <Input disabled={true} value={title} onChange={e => setTitle(e.target.value)} />
