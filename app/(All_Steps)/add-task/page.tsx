@@ -1,4 +1,3 @@
-'use client';
 import AddTaskForm from '@/app/_Components/_AddTaskForm';
 import {Suspense} from 'react';
 
