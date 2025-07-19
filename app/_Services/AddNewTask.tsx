@@ -11,6 +11,8 @@ const addNewTask = async (formData: IGetTaskById) => {
       method: 'POST',
       body: JSON.stringify(formData)
     });
+    console.log(response);
+
     if (!response.ok) throw new Error('Error');
   } catch (error) {
     toast.error('Add Failed  ' + error);

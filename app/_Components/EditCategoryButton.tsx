@@ -12,8 +12,8 @@ const EditCategoryButton = ({id, CategoryName}: {id: string; CategoryName: strin
   const {mutate: editCategory, isPending} = EditCategory();
   return (
     <Dialog open={open} onOpenChange={val => setOpen(val)}>
-      <DialogTrigger>
-        <Button asChild>Edit</Button>;
+      <DialogTrigger asChild>
+        <Button>Edit</Button>
       </DialogTrigger>
 
       <DialogContent>
