@@ -1,5 +1,5 @@
-import {ICategoryWithTask} from './../_Services/GetAllCategory';
-import {Button} from '@/app/_components/shadCn/button';
+import {ICategoryWithTask} from '../_Services/GetAllCategory';
+import {Button} from '@/app/_Components/shadCn/button';
 import TableActionButton from './TableActionButton';
 import {Badge} from './shadCn/badge';
 import {useRouter} from 'next/navigation';

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Badge} from './shadCn/badge';
-import {Button} from '@/app/_components/shadCn/button';
+import {Button} from '@/app/_Components/shadCn/button';
 import {Check, ListTodo, Loader2, Timer} from 'lucide-react';
 import {Popover, PopoverContent, PopoverTrigger} from './shadCn/popover';
 import ChangeStatusOfTask from '../_Services/ChangeStatusOfTask';

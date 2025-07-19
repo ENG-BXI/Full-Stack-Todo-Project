@@ -3,9 +3,9 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 
 import ReactQueryProvider from './_lib/ReactQueryProvider';
-import { Sidebar, SidebarProvider } from './_components/shadCn/sidebar';
-import Header from './_components/Header';
-import { Toaster } from 'sonner';
+import {Sidebar, SidebarProvider} from './_Components/shadCn/sidebar';
+import Header from './_Components/Header';
+import {Toaster} from 'sonner';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
