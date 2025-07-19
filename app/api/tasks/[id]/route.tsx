@@ -1,4 +1,4 @@
-import {SelectedItems} from '@/app/_Components/MultiSelect';
+import {SelectedItems} from '@/app/_components/MultiSelect';
 import {ICategory} from '@/app/_Services/GetAllCategoryOption';
 import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';

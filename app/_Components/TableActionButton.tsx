@@ -1,7 +1,7 @@
 'use client';
 import {Edit, Loader2, Trash} from 'lucide-react';
 import React from 'react';
-import {DeleteTask} from '../_Services/DeleteTask';
+import {DeleteTask} from '../todo_app/app/_Services/DeleteTask';
 import {useRouter} from 'next/navigation';
 
 const TableActionButton = ({id}: {id: string}) => {

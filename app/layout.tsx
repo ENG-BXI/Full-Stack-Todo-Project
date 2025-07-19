@@ -1,10 +1,10 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
-import SideBar from './_Components/SideBar';
-import {SidebarProvider} from './_Components/shadCn/sidebar';
-import Header from './_Components/Header';
-import {Toaster} from './_Components/shadCn/sonner';
+import SideBar from '../../_components/SideBar';
+import {SidebarProvider} from '../../_components/shadCn/sidebar';
+import Header from '../../_components/Header';
+import {Toaster} from '../../_components/shadCn/sonner';
 import ReactQueryProvider from './_lib/ReactQueryProvider';
 const geistSans = Geist({
   variable: '--font-geist-sans',

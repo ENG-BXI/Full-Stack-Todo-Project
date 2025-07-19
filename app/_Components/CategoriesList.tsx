@@ -1,13 +1,13 @@
-import {ICategoryWithTask} from '../_Services/GetAllCategory';
+import {ICategoryWithTask} from '../todo_app/app/_Services/GetAllCategory';
 import {Button} from '@/app/_components/shadCn/button';
-import {Card, CardAction, CardContent, CardHeader, CardTitle} from './shadCn/card';
-import {TableHeader, TableRow, TableHead, TableBody, TableCell, Table} from './shadCn/table';
-import EditCategoryButton from './EditCategoryButton';
-import DeleteCategoryButton from './DeleteCategoryButton';
 import TableActionButton from './TableActionButton';
 import {Badge} from './shadCn/badge';
 import {useRouter} from 'next/navigation';
 import TaskStatusInTable from './TaskStatusInTable';
+import {Card, CardAction, CardContent, CardHeader, CardTitle} from './shadCn/card';
+import DeleteCategoryButton from './DeleteCategoryButton';
+import EditCategoryButton from './EditCategoryButton';
+import {TableHeader, TableRow, TableHead, TableBody, TableCell, Table} from './shadCn/table';
 
 const CategoriesList = ({data, numberOfTasks, numberOfDoneTasks}: {data: ICategoryWithTask[]; numberOfTasks: number[]; numberOfDoneTasks: number[]}) => {
   const route = useRouter();
@@ -44,14 +44,22 @@ const CategoriesList = ({data, numberOfTasks, numberOfDoneTasks}: {data: ICatego
                 {category.todo.map(task => {
                   return (
                     <TableRow key={task.id}>
-                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer' >{task.title}</TableCell>
-                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer' >{task.description}</TableCell>
-                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer' >{task.expireDate.toLocaleString().split('T')[0]}</TableCell>
+                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer'>
+                        {task.title}
+                      </TableCell>
+                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer'>
+                        {task.description}
+                      </TableCell>
+                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer'>
+                        {task.expireDate.toLocaleString().split('T')[0]}
+                      </TableCell>
                       <TableCell>
                         <TaskStatusInTable id={task.id} status={task.status} />
                       </TableCell>
 
-                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer' >{task.priority}</TableCell>
+                      <TableCell onClick={() => route.push(`/view-task/${task.id}`)} className='cursor-pointer'>
+                        {task.priority}
+                      </TableCell>
                       <TableCell>
                         <TableActionButton id={task.id} />
                       </TableCell>

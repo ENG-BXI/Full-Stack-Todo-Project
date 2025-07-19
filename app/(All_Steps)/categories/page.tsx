@@ -1,7 +1,7 @@
 'use client';
-import AddCategoryButton from '@/app/_Components/AddCategoryButton';
-import CategoriesList from '@/app/_Components/CategoriesList';
-import {Card, CardAction, CardContent, CardHeader, CardTitle} from '@/app/_Components/shadCn/card';
+import AddCategoryButton from '@/app/_components/AddCategoryButton';
+import CategoriesList from '@/app/_components/CategoriesList';
+import {Card, CardAction, CardContent, CardHeader, CardTitle} from '@/app/_components/shadCn/card';
 import GetAllCategory from '@/app/_Services/GetAllCategory';
 import {Loader2} from 'lucide-react';
 

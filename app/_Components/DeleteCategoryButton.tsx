@@ -1,7 +1,7 @@
 'use client';
 
 import {Loader2} from 'lucide-react';
-import DeleteCategory from '../_Services/DeleteCategory';
+import DeleteCategory from '../todo_app/app/_Services/DeleteCategory';
 import {Button} from '@/app/_components/shadCn/button';
 
 const DeleteCategoryButton = ({id}: {id: string}) => {

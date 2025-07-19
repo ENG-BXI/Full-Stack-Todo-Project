@@ -1,11 +1,11 @@
 'use client';
 import React from 'react';
-import {TableRow, TableCell, TableBody} from './shadCn/table';
-import TableActionButton from './TableActionButton';
-import {Badge} from './shadCn/badge';
-import GetAllTasks from '../_Services/GetAllTasks';
-import TaskStatusInTable from './TaskStatusInTable';
+import GetAllTasks from '../todo_app/app/_Services/GetAllTasks';
 import {useRouter} from 'next/navigation';
+import {TableBody, TableRow, TableCell} from './shadCn/table';
+import TableActionButton from './TableActionButton';
+import TaskStatusInTable from './TaskStatusInTable';
+import {Badge} from './shadCn/badge';
 export interface ITodo {
   id: string;
   title: string;

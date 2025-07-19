@@ -1,9 +1,9 @@
 import {Plus} from 'lucide-react';
-import {Button} from './_components/shadCn/button';
-import {Card, CardContent, CardHeader, CardTitle} from './_Components/shadCn/card';
-import {Input} from './_components/shadCn/input';
-import {Table, TableHead, TableHeader, TableRow} from './_Components/shadCn/table';
-import TodoList from './_Components/TodoList';
+import {Button} from '../../_components/shadCn/button';
+import {Card, CardContent, CardHeader, CardTitle} from '../../_components/shadCn/card';
+import {Input} from '../../_components/shadCn/input';
+import {Table, TableHead, TableHeader, TableRow} from '../../_components/shadCn/table';
+import TodoList from '../../_components/TodoList';
 import Link from 'next/link';
 // import {PrismaClient} from './generated/prisma';
 

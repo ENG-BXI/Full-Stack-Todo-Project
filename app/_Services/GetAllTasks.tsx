@@ -1,5 +1,5 @@
 import {useQuery} from '@tanstack/react-query';
-import {ITodo} from '../_Components/TodoList';
+import {ITodo} from '../../../_components/TodoList';
 
 const getAllTasks = async () => {
   const response = await fetch('http://localhost:3000/api/tasks');
