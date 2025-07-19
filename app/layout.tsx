@@ -3,9 +3,10 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 
 import ReactQueryProvider from './_lib/ReactQueryProvider';
-import {Sidebar, SidebarProvider} from './_Components/shadCn/sidebar';
 import Header from './_Components/Header';
 import {Toaster} from 'sonner';
+import SideBar from './_Components/SideBar';
+import {SidebarProvider} from './_Components/shadCn/sidebar';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -30,7 +31,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen! overflow-x-hidden`}>
         <ReactQueryProvider>
           <SidebarProvider>
-            <Sidebar />
+            <SideBar />
             <main className='w-screen px-3'>
               <Header />
               {children}
