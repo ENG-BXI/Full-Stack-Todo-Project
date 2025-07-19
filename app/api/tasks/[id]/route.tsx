@@ -23,7 +23,7 @@ export interface IGetTaskById {
   priority: 'low' | 'high' | 'medium';
   expireDate: Date;
 }
-export async function GET(_res: NextResponse, {params}: {params: Promise<{id: string}>}) {
+export async function GET(_res: NextRequest , {params}: {params: Promise<{id: string}>}) {
   const {id} = await params;
   const prisma = new PrismaClient();
   try {
