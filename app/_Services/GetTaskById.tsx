@@ -3,7 +3,7 @@ import {IGetTaskById} from '../api/tasks/[id]/route';
 
 const getTaskById = async (id: string) => {
   if (!id) throw new Error('Write A Id');
-  const response = await fetch(`http://localhost:3000/api/tasks/${id}`);
+  const response = await fetch(location.origin + `/api/tasks/${id}`);
   const data = await response.json();
 
   return data.taskResponse as IGetTaskById;

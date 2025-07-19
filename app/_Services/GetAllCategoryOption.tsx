@@ -14,7 +14,7 @@ export interface ITask {
   expireDate: Date;
 }
 const getAllCategoryOption = async () => {
-  const response = await fetch('http://localhost:3000/api/category');
+  const response = await fetch(location.origin + '/api/category');
   const category = await response.json();
   const SelectedItems: SelectedItems[] = category.Categories.map((item: ICategory) => {
     const data: SelectedItems = {

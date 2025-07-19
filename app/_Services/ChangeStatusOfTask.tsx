@@ -2,7 +2,7 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {toast} from 'sonner';
 
 const changeStatusOfTask = async (id: string, status: string) => {
-  const response = await fetch(`http://localhost:3000/api/tasks/${id}/changeStatus`, {method: 'PATCH', body: JSON.stringify({status: status})});
+  const response = await fetch(location.origin + `/api/tasks/${id}/changeStatus`, {method: 'PATCH', body: JSON.stringify({status: status})});
   const data = await response.json();
   console.log(response);
 

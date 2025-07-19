@@ -11,7 +11,7 @@ const Page = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Categories {isLoading ? <Loader2 className='w-4 h-4 animate-spin inline' /> : data?.categories.length}</CardTitle>
+        <CardTitle>Categories {isLoading && !isError ? <Loader2 className='w-4 h-4 animate-spin inline' /> : data?.categories?.length}</CardTitle>
         <CardAction>
           <AddCategoryButton />
         </CardAction>

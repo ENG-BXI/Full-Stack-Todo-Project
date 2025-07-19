@@ -7,7 +7,7 @@ const editTask = async (id: string, formData: ITaskWithSelectedCategory) => {
   console.log(formData, id);
 
   try {
-    const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+    const response = await fetch(location.origin + `/api/tasks/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(formData)
     });

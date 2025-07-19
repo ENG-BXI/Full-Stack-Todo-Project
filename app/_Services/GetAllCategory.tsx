@@ -1,6 +1,6 @@
 'use client';
 import {useQuery} from '@tanstack/react-query';
-import { ITodo } from '../_Components/TodoList';
+import {ITodo} from '../_Components/TodoList';
 export interface ICategoryWithTask {
   id: string;
   name: string;
@@ -8,8 +8,9 @@ export interface ICategoryWithTask {
 }
 
 const getAllCategory = async () => {
-  const response = await fetch('http://localhost:3000/api/category');
+  const response = await fetch(location.origin + '/api/category');
   const data = await response.json();
+  console.log(data);
   return {categories: data.Categories as ICategoryWithTask[], tasks: data.NumberOfTasks as number[], done: data.NumberOfDoneTasks as number[]};
 };
 const GetAllCategory = () => {

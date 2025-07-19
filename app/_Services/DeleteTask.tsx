@@ -2,7 +2,7 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {toast} from 'sonner';
 
 async function deleteTask(id: string) {
-  return await fetch(`http://localhost:3000/api/tasks/${id}`, {method: 'DELETE'});
+  return await fetch(location.origin + `/api/tasks/${id}`, {method: 'DELETE'});
 }
 
 export function DeleteTask() {

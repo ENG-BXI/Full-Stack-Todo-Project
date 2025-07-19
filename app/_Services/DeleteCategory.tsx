@@ -2,7 +2,7 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import {toast} from 'sonner';
 
 const deleteCategory = async (id: string) => {
-  const response = await fetch(`http://localhost:3000/api/category/${id}`, {method: 'DELETE'});
+  const response = await fetch(location.origin + `/api/category/${id}`, {method: 'DELETE'});
   const data = await response.json();
   console.log(response);
 

@@ -7,7 +7,7 @@ const addNewTask = async (formData: IGetTaskById) => {
   console.log(formData);
 
   try {
-    const response = await fetch('http://localhost:3000/api/tasks', {
+    const response = await fetch(location.origin + '/api/tasks', {
       method: 'POST',
       body: JSON.stringify(formData)
     });
