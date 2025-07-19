@@ -1,6 +1,6 @@
 'use client';
 import {useQuery} from '@tanstack/react-query';
-import {ITodo} from '../../../_components/TodoList';
+import { ITodo } from '../_Components/TodoList';
 export interface ICategoryWithTask {
   id: string;
   name: string;

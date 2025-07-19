@@ -1,10 +1,10 @@
 'use client';
 import {useState} from 'react';
-import {Button} from './shadCn/button';
-import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger} from './shadCn/dialog';
-import {Input} from './shadCn/input';
 import AddNewCategory from '../_Services/AddNewCategory';
 import {Loader2} from 'lucide-react';
+import { Button } from './shadCn/button';
+import { Input } from './shadCn/input';
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from './shadCn/dialog';
 
 const AddCategoryButton = () => {
   const [name, setName] = useState('');

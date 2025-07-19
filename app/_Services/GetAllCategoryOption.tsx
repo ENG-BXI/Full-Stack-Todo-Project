@@ -1,6 +1,6 @@
 'use client';
 import {useQuery} from '@tanstack/react-query';
-import {SelectedItems} from '../../../_components/MultiSelect';
+import { SelectedItems } from '../_Components/MultiSelect';
 
 export interface ICategory {
   id?: string;

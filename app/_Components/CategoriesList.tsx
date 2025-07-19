@@ -1,13 +1,13 @@
 import {ICategoryWithTask} from '../_Services/GetAllCategory';
 import {Button} from '@/app/_Components/shadCn/button';
 import TableActionButton from './TableActionButton';
-import {Badge} from './shadCn/badge';
 import {useRouter} from 'next/navigation';
 import TaskStatusInTable from './TaskStatusInTable';
-import {Card, CardAction, CardContent, CardHeader, CardTitle} from './shadCn/card';
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from './shadCn/card';
 import DeleteCategoryButton from './DeleteCategoryButton';
 import EditCategoryButton from './EditCategoryButton';
 import {TableHeader, TableRow, TableHead, TableBody, TableCell, Table} from './shadCn/table';
+import { Badge } from './shadCn/badge';
 
 const CategoriesList = ({data, numberOfTasks, numberOfDoneTasks}: {data: ICategoryWithTask[]; numberOfTasks: number[]; numberOfDoneTasks: number[]}) => {
   const route = useRouter();
