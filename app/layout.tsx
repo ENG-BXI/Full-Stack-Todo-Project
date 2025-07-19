@@ -1,11 +1,11 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
-import SideBar from '../../_components/SideBar';
-import {SidebarProvider} from '../../_components/shadCn/sidebar';
-import Header from '../../_components/Header';
-import {Toaster} from '../../_components/shadCn/sonner';
+
 import ReactQueryProvider from './_lib/ReactQueryProvider';
+import { Sidebar, SidebarProvider } from './_components/shadCn/sidebar';
+import Header from './_components/Header';
+import { Toaster } from 'sonner';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen! overflow-x-hidden`}>
         <ReactQueryProvider>
           <SidebarProvider>
-            <SideBar />
+            <Sidebar />
             <main className='w-screen px-3'>
               <Header />
               {children}
