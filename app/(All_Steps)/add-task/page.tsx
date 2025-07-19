@@ -15,8 +15,6 @@ import {Popover, PopoverContent, PopoverTrigger} from '../../_Components/shadCn/
 import {Calendar} from '../../_Components/shadCn/calendar';
 
 const Page = () => {
-  const SearchParams = useSearchParams();
-  const ParamCategory = SearchParams.get('category');
   const route = useRouter();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -26,6 +24,8 @@ const Page = () => {
   const [expireDate, setExpireDate] = useState<Date>();
   const {data, isLoading, isError} = GetAllCategoryOption();
   const {mutate: addNewTask, isPending} = AddNewTask();
+  const SearchParams = useSearchParams();
+  const ParamCategory = SearchParams.get('category');
   function handleOnClick(e: FormEvent) {
     e.preventDefault();
     if (!title && !description && !category && !priority && !expireDate) return;
