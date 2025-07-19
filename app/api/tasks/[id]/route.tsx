@@ -3,7 +3,7 @@ import {ICategory} from '@/app/_Services/GetAllCategoryOption';
 import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';
 
-export async function DELETE(_res: NextResponse, {params}: {params: Promise<{id: string}>}) {
+export async function DELETE(_res: NextRequest, {params}: {params: Promise<{id: string}>}) {
   const {id} = await params;
   try {
     if (id && typeof id === 'string') {
@@ -23,7 +23,7 @@ export interface IGetTaskById {
   priority: 'low' | 'high' | 'medium';
   expireDate: Date;
 }
-export async function GET(_res: NextRequest , {params}: {params: Promise<{id: string}>}) {
+export async function GET(_res: NextRequest, {params}: {params: Promise<{id: string}>}) {
   const {id} = await params;
   const prisma = new PrismaClient();
   try {
