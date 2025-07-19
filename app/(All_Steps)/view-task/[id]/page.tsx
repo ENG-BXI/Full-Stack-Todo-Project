@@ -1,11 +1,11 @@
 'use client';
-import {Card, CardContent, CardHeader, CardTitle} from '../../../_Components/shadCn/card';
-import {Input} from '../../../_components/shadCn/input';
-import {Popover, PopoverContent, PopoverTrigger} from '../../../_Components/shadCn/popover';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '../../../_Components/shadCn/select';
-import {Button} from '../../../_components/shadCn/button';
+import {Card, CardContent, CardHeader, CardTitle} from '@/app/_Components/shadCn/card';
+import {Input} from '@/app/_components/shadCn/input';
+import {Popover, PopoverContent, PopoverTrigger} from '@/app/_Components/shadCn/popover';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/app/_Components/shadCn/select';
+import {Button} from '@/app/_components/shadCn/button';
 import {CalendarIcon} from 'lucide-react';
-import {Calendar} from '../../../_Components/shadCn/calendar';
+import {Calendar} from '@/app/_Components/shadCn/calendar';
 import {useParams, useRouter} from 'next/navigation';
 import {useEffect, useState} from 'react';
 import {format} from 'date-fns';

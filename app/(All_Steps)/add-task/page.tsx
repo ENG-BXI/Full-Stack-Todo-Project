@@ -1,11 +1,10 @@
 'use client';
-import {Card, CardContent, CardHeader, CardTitle} from '../../_Components/shadCn/card';
-import {Input} from '../../_components/shadCn/input';
-import {Popover, PopoverContent, PopoverTrigger} from '../../_Components/shadCn/popover';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '../../_Components/shadCn/select';
-import {Button} from '../../_components/shadCn/button';
+import {Input} from '@/app/_components/shadCn/input';
+import {Popover, PopoverContent, PopoverTrigger} from '@/app/_Components/shadCn/popover';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/app/_Components/shadCn/select';
+import {Button} from '@/app/_components/shadCn/button';
 import {CalendarIcon} from 'lucide-react';
-import {Calendar} from '../../_Components/shadCn/calendar';
+import {Calendar} from '@/app/_Components/shadCn/calendar';
 import {useRouter, useSearchParams} from 'next/navigation';
 import {FormEvent, useEffect, useState} from 'react';
 import {format} from 'date-fns';
@@ -13,6 +12,7 @@ import GetAllCategoryOption from '../../_Services/GetAllCategoryOption';
 import AddNewTask from '../../_Services/AddNewTask';
 import {IGetTaskById} from '@/app/api/tasks/[id]/route';
 import {MultiSelect, SelectedItems} from '@/app/_Components/MultiSelect';
+import { Card, CardContent, CardHeader, CardTitle } from '@/app/_Components/shadCn/card';
 
 const Page = () => {
   const SearchParams = useSearchParams();
