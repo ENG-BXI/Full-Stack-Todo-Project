@@ -2,7 +2,9 @@ import {ICategory} from '@/app/_Services/GetAllCategoryOption';
 import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';
 import {IGetTaskById} from './[id]/route';
+import {config} from '../api-config';
 
+export {config};
 export async function GET() {
   const prisma = await new PrismaClient();
   let todo;

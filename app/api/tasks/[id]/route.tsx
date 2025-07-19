@@ -2,7 +2,9 @@ import {SelectedItems} from '@/app/_Components/MultiSelect';
 import {ICategory} from '@/app/_Services/GetAllCategoryOption';
 import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';
+import {config} from '../../api-config';
 
+export {config};
 export async function DELETE(_res: NextRequest, {params}: {params: Promise<{id: string}>}) {
   const {id} = await params;
   try {

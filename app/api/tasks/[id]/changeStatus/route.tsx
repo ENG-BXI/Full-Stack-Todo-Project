@@ -1,6 +1,8 @@
 import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';
+import {config} from '../../../api-config';
 
+export {config};
 export async function PATCH(req: NextRequest, {params}: {params: Promise<{id: string}>}) {
   const {status} = await req.json();
   const {id} = await params;
