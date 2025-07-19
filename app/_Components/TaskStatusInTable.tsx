@@ -1,9 +1,9 @@
 import {useState} from 'react';
-import ChangeStatusOfTask from '../todo_app/app/_Services/ChangeStatusOfTask';
 import {Badge} from './shadCn/badge';
 import {Button} from '@/app/_components/shadCn/button';
 import {Check, ListTodo, Loader2, Timer} from 'lucide-react';
-import {PopoverTrigger} from './shadCn/popover';
+import {Popover, PopoverContent, PopoverTrigger} from './shadCn/popover';
+import ChangeStatusOfTask from '../_Services/ChangeStatusOfTask';
 
 export default function TaskStatusInTable({id, status}: {id: string; status: string}) {
   const [open, setOpen] = useState(false);

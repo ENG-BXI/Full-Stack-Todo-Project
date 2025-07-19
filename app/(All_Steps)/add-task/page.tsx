@@ -12,7 +12,7 @@ import AddNewTask from '../../_Services/AddNewTask';
 import {IGetTaskById} from '@/app/api/tasks/[id]/route';
 import {MultiSelect, SelectedItems} from '@/app/_components/MultiSelect';
 import {Card, CardContent, CardHeader, CardTitle} from '@/app/_components/shadCn/card';
-import { Popover, PopoverContent, PopoverTrigger } from '@/app/_Components/shadCn/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/app/_components/shadCn/popover';
 
 const Page = () => {
   const SearchParams = useSearchParams();

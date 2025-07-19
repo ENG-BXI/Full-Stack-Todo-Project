@@ -11,7 +11,7 @@ import {format} from 'date-fns';
 import GetAllCategoryOptions from '../../../_Services/GetAllCategoryOption';
 import GetTaskById from '@/app/_Services/GetTaskById';
 import {MultiSelect, SelectedItems} from '@/app/_components/MultiSelect';
-import { Popover, PopoverContent, PopoverTrigger } from '@/app/_Components/shadCn/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/app/_components/shadCn/popover';
 
 const Page = () => {
   const params = useParams();

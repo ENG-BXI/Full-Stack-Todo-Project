@@ -1,11 +1,12 @@
 'use client';
 import React from 'react';
-import GetAllTasks from '../todo_app/app/_Services/GetAllTasks';
 import {useRouter} from 'next/navigation';
 import {TableBody, TableRow, TableCell} from './shadCn/table';
 import TableActionButton from './TableActionButton';
 import TaskStatusInTable from './TaskStatusInTable';
 import {Badge} from './shadCn/badge';
+import GetAllTasks from '../_Services/GetAllTasks';
+import { ICategory } from '../_Services/GetAllCategoryOption';
 export interface ITodo {
   id: string;
   title: string;
@@ -34,7 +35,7 @@ const TodoList = () => {
                 {item.description}
               </TableCell>
               <TableCell onClick={() => route.push(`/view-task/${item.id}`)} className='flex gap-1 flex-wrap cursor-pointer'>
-                {item.category.map(cat => (
+                {item.category.map((cat:ICategory) => (
                   <Badge key={cat.name}>{cat.name}</Badge>
                 ))}
               </TableCell>

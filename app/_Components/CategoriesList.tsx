@@ -1,4 +1,4 @@
-import {ICategoryWithTask} from '../todo_app/app/_Services/GetAllCategory';
+import {ICategoryWithTask} from './../_Services/GetAllCategory';
 import {Button} from '@/app/_components/shadCn/button';
 import TableActionButton from './TableActionButton';
 import {Badge} from './shadCn/badge';
