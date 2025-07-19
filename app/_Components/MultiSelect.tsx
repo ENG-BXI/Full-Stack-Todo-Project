@@ -9,7 +9,7 @@ import {Command} from './shadCn/command';
 
 export type SelectedItems = Record<'value' | 'id', string>;
 
-export function MultiSelect({SelectedOptions, SelectLabel, Selected, setValues, disabled = false}: {SelectedOptions: SelectedItems[]; Selected?: SelectedItems[]; SelectLabel: string; setValues: React.Dispatch<React.SetStateAction<SelectedItems[]>>; disabled: boolean}) {
+export function MultiSelect({SelectedOptions, SelectLabel, Selected, setValues, disabled = false}: {SelectedOptions: SelectedItems[]; Selected?: SelectedItems[]; SelectLabel: string; setValues: React.Dispatch<React.SetStateAction<SelectedItems[]>>; disabled?: boolean}) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
   const [selected, setSelected] = React.useState<SelectedItems[]>([]);

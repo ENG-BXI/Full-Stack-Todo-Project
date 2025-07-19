@@ -1,8 +1,8 @@
 'use client';
 import {useState} from 'react';
-import {Button} from './shadCn/button';
-import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger} from './shadCn/dialog';
-import {Input} from './shadCn/input';
+import {Button} from '@/app/_components/shadCn/button';
+import {Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger} from '@/app/_components/shadCn/dialog';
+import {Input} from '@/app/_components/shadCn/input';
 import {Loader2} from 'lucide-react';
 import EditCategory from '../_Services/EditCategory';
 

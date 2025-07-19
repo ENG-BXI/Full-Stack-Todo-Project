@@ -4,8 +4,6 @@ import {TableRow, TableCell, TableBody} from './shadCn/table';
 import TableActionButton from './TableActionButton';
 import {Badge} from './shadCn/badge';
 import GetAllTasks from '../_Services/GetAllTasks';
-import {Popover, PopoverContent, PopoverTrigger} from './shadCn/popover';
-import {Button} from '@/app/_Components/shadCn/button';
 import TaskStatusInTable from './TaskStatusInTable';
 import {useRouter} from 'next/navigation';
 export interface ITodo {
