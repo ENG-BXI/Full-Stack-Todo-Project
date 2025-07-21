@@ -14,10 +14,12 @@ import {MultiSelect, SelectedItems} from '../../../_Components/MultiSelect';
 import {ITaskWithSelectedCategory} from '@/app/api/tasks/[id]/route';
 import EditTask from '@/app/_Services/EditTask';
 import {Popover, PopoverContent, PopoverTrigger} from '../../../_Components/shadCn/popover';
+import {useAuth} from '@clerk/nextjs';
 
 const Page = () => {
   const params = useParams();
   const id = params.id as string;
+  const {userId} = useAuth();
   const route = useRouter();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -39,6 +41,7 @@ const Page = () => {
   const {mutate: editTask, isPending} = EditTask();
   function handleOnClick(e: FormEvent) {
     e.preventDefault();
+    if (!userId) return;
     if (!title && !description && !category && !priority && !expireDate) return;
     const formData: ITaskWithSelectedCategory = {
       title,
@@ -46,7 +49,7 @@ const Page = () => {
       description,
       expireDate: expireDate!,
       priority,
-      userId: 'fd8d5e20-c67d-4444-8c63-7b4425db85e6'
+      userId
     };
     editTask({id, formData});
   }
