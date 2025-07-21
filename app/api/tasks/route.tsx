@@ -8,9 +8,12 @@ import {auth} from '@clerk/nextjs/server';
 export {config};
 export async function GET() {
   const prisma = await new PrismaClient();
-  let todo;
+  const {userId} = await auth();
+  let todo = [];
+  if (!userId) return NextResponse.json({message: 'Cant Find User id', status: 400}, {status: 400});
   try {
     todo = await prisma.todo.findMany({
+      where: {id: userId},
       include: {
         category: true,
         user: true
@@ -32,7 +35,6 @@ export async function POST(req: NextRequest) {
     const {userId} = await auth();
     if (!userId) return NextResponse.json({message: 'Cannot Find UserID'}, {status: 400});
 
-    const user = await prisma.user.findUnique({where: {id: userId}});
     const category = formData.category.map(item => {
       const data: ICategory = {
         id: item.id,
@@ -42,7 +44,7 @@ export async function POST(req: NextRequest) {
     });
     const newTask = await prisma.todo.create({
       data: {
-        userId: user!.id,
+        userId: userId,
         title: formData.title,
         description: formData.description,
         expireDate: new Date(formData.expireDate),

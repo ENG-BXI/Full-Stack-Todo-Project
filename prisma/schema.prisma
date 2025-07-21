@@ -15,11 +15,12 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
+  id       String     @id @default(uuid())
   name     String
-  email    String @unique
+  email    String     @unique
   password String
   todo     todo[]
+  category category[]
 }
 
 model todo {
@@ -35,9 +36,11 @@ model todo {
 }
 
 model category {
-  id   String @id @default(uuid())
-  name String @unique
-  todo todo[]
+  id     String @id @default(uuid())
+  name   String @unique
+  todo   todo[]
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum status {

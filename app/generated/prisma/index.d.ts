@@ -1083,10 +1083,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     todo: number
+    category: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todo?: boolean | UserCountOutputTypeCountTodoArgs
+    category?: boolean | UserCountOutputTypeCountCategoryArgs
   }
 
   // Custom InputTypes
@@ -1105,6 +1107,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountTodoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: todoWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: categoryWhereInput
   }
 
 
@@ -1331,6 +1340,7 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     todo?: boolean | User$todoArgs<ExtArgs>
+    category?: boolean | User$categoryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1358,6 +1368,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todo?: boolean | User$todoArgs<ExtArgs>
+    category?: boolean | User$categoryArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1367,6 +1378,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       todo: Prisma.$todoPayload<ExtArgs>[]
+      category: Prisma.$categoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1768,6 +1780,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     todo<T extends User$todoArgs<ExtArgs> = {}>(args?: Subset<T, User$todoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$todoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    category<T extends User$categoryArgs<ExtArgs> = {}>(args?: Subset<T, User$categoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$categoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2210,6 +2223,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TodoScalarFieldEnum | TodoScalarFieldEnum[]
+  }
+
+  /**
+   * User.category
+   */
+  export type User$categoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the category
+     */
+    select?: categorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the category
+     */
+    omit?: categoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    where?: categoryWhereInput
+    orderBy?: categoryOrderByWithRelationInput | categoryOrderByWithRelationInput[]
+    cursor?: categoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
   }
 
   /**
@@ -3358,16 +3395,19 @@ export namespace Prisma {
   export type CategoryMinAggregateOutputType = {
     id: string | null
     name: string | null
+    userId: string | null
   }
 
   export type CategoryMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    userId: string | null
   }
 
   export type CategoryCountAggregateOutputType = {
     id: number
     name: number
+    userId: number
     _all: number
   }
 
@@ -3375,16 +3415,19 @@ export namespace Prisma {
   export type CategoryMinAggregateInputType = {
     id?: true
     name?: true
+    userId?: true
   }
 
   export type CategoryMaxAggregateInputType = {
     id?: true
     name?: true
+    userId?: true
   }
 
   export type CategoryCountAggregateInputType = {
     id?: true
     name?: true
+    userId?: true
     _all?: true
   }
 
@@ -3463,6 +3506,7 @@ export namespace Prisma {
   export type CategoryGroupByOutputType = {
     id: string
     name: string
+    userId: string
     _count: CategoryCountAggregateOutputType | null
     _min: CategoryMinAggregateOutputType | null
     _max: CategoryMaxAggregateOutputType | null
@@ -3485,41 +3529,55 @@ export namespace Prisma {
   export type categorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    userId?: boolean
     todo?: boolean | category$todoArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type categorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type categorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
   export type categorySelectScalar = {
     id?: boolean
     name?: boolean
+    userId?: boolean
   }
 
-  export type categoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
+  export type categoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "userId", ExtArgs["result"]["category"]>
   export type categoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     todo?: boolean | category$todoArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type categoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type categoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type categoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type categoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $categoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "category"
     objects: {
       todo: Prisma.$todoPayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      userId: string
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -3915,6 +3973,7 @@ export namespace Prisma {
   export interface Prisma__categoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     todo<T extends category$todoArgs<ExtArgs> = {}>(args?: Subset<T, category$todoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$todoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3946,6 +4005,7 @@ export namespace Prisma {
   interface categoryFieldRefs {
     readonly id: FieldRef<"category", 'String'>
     readonly name: FieldRef<"category", 'String'>
+    readonly userId: FieldRef<"category", 'String'>
   }
     
 
@@ -4195,6 +4255,10 @@ export namespace Prisma {
      */
     data: categoryCreateManyInput | categoryCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4265,6 +4329,10 @@ export namespace Prisma {
      * Limit how many categories to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4415,7 +4483,8 @@ export namespace Prisma {
 
   export const CategoryScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    userId: 'userId'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -4532,6 +4601,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     todo?: TodoListRelationFilter
+    category?: CategoryListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4540,6 +4610,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     todo?: todoOrderByRelationAggregateInput
+    category?: categoryOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4551,6 +4622,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     todo?: TodoListRelationFilter
+    category?: CategoryListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -4647,13 +4719,17 @@ export namespace Prisma {
     NOT?: categoryWhereInput | categoryWhereInput[]
     id?: StringFilter<"category"> | string
     name?: StringFilter<"category"> | string
+    userId?: StringFilter<"category"> | string
     todo?: TodoListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type categoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    userId?: SortOrder
     todo?: todoOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type categoryWhereUniqueInput = Prisma.AtLeast<{
@@ -4662,12 +4738,15 @@ export namespace Prisma {
     AND?: categoryWhereInput | categoryWhereInput[]
     OR?: categoryWhereInput[]
     NOT?: categoryWhereInput | categoryWhereInput[]
+    userId?: StringFilter<"category"> | string
     todo?: TodoListRelationFilter
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "name">
 
   export type categoryOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    userId?: SortOrder
     _count?: categoryCountOrderByAggregateInput
     _max?: categoryMaxOrderByAggregateInput
     _min?: categoryMinOrderByAggregateInput
@@ -4679,6 +4758,7 @@ export namespace Prisma {
     NOT?: categoryScalarWhereWithAggregatesInput | categoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"category"> | string
     name?: StringWithAggregatesFilter<"category"> | string
+    userId?: StringWithAggregatesFilter<"category"> | string
   }
 
   export type UserCreateInput = {
@@ -4687,6 +4767,7 @@ export namespace Prisma {
     email: string
     password: string
     todo?: todoCreateNestedManyWithoutUserInput
+    category?: categoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4695,6 +4776,7 @@ export namespace Prisma {
     email: string
     password: string
     todo?: todoUncheckedCreateNestedManyWithoutUserInput
+    category?: categoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4703,6 +4785,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     todo?: todoUpdateManyWithoutUserNestedInput
+    category?: categoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4711,6 +4794,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     todo?: todoUncheckedUpdateManyWithoutUserNestedInput
+    category?: categoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4811,11 +4895,13 @@ export namespace Prisma {
     id?: string
     name: string
     todo?: todoCreateNestedManyWithoutCategoryInput
+    user: UserCreateNestedOneWithoutCategoryInput
   }
 
   export type categoryUncheckedCreateInput = {
     id?: string
     name: string
+    userId: string
     todo?: todoUncheckedCreateNestedManyWithoutCategoryInput
   }
 
@@ -4823,17 +4909,20 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     todo?: todoUpdateManyWithoutCategoryNestedInput
+    user?: UserUpdateOneRequiredWithoutCategoryNestedInput
   }
 
   export type categoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     todo?: todoUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoryCreateManyInput = {
     id?: string
     name: string
+    userId: string
   }
 
   export type categoryUpdateManyMutationInput = {
@@ -4844,6 +4933,7 @@ export namespace Prisma {
   export type categoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4867,7 +4957,17 @@ export namespace Prisma {
     none?: todoWhereInput
   }
 
+  export type CategoryListRelationFilter = {
+    every?: categoryWhereInput
+    some?: categoryWhereInput
+    none?: categoryWhereInput
+  }
+
   export type todoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type categoryOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -4955,19 +5055,9 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type CategoryListRelationFilter = {
-    every?: categoryWhereInput
-    some?: categoryWhereInput
-    none?: categoryWhereInput
-  }
-
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
-  }
-
-  export type categoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type todoCountOrderByAggregateInput = {
@@ -5055,16 +5145,19 @@ export namespace Prisma {
   export type categoryCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    userId?: SortOrder
   }
 
   export type categoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    userId?: SortOrder
   }
 
   export type categoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    userId?: SortOrder
   }
 
   export type todoCreateNestedManyWithoutUserInput = {
@@ -5074,11 +5167,25 @@ export namespace Prisma {
     connect?: todoWhereUniqueInput | todoWhereUniqueInput[]
   }
 
+  export type categoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput> | categoryCreateWithoutUserInput[] | categoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: categoryCreateOrConnectWithoutUserInput | categoryCreateOrConnectWithoutUserInput[]
+    createMany?: categoryCreateManyUserInputEnvelope
+    connect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+  }
+
   export type todoUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<todoCreateWithoutUserInput, todoUncheckedCreateWithoutUserInput> | todoCreateWithoutUserInput[] | todoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: todoCreateOrConnectWithoutUserInput | todoCreateOrConnectWithoutUserInput[]
     createMany?: todoCreateManyUserInputEnvelope
     connect?: todoWhereUniqueInput | todoWhereUniqueInput[]
+  }
+
+  export type categoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput> | categoryCreateWithoutUserInput[] | categoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: categoryCreateOrConnectWithoutUserInput | categoryCreateOrConnectWithoutUserInput[]
+    createMany?: categoryCreateManyUserInputEnvelope
+    connect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5099,6 +5206,20 @@ export namespace Prisma {
     deleteMany?: todoScalarWhereInput | todoScalarWhereInput[]
   }
 
+  export type categoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput> | categoryCreateWithoutUserInput[] | categoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: categoryCreateOrConnectWithoutUserInput | categoryCreateOrConnectWithoutUserInput[]
+    upsert?: categoryUpsertWithWhereUniqueWithoutUserInput | categoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: categoryCreateManyUserInputEnvelope
+    set?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    disconnect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    delete?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    connect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    update?: categoryUpdateWithWhereUniqueWithoutUserInput | categoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: categoryUpdateManyWithWhereWithoutUserInput | categoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: categoryScalarWhereInput | categoryScalarWhereInput[]
+  }
+
   export type todoUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<todoCreateWithoutUserInput, todoUncheckedCreateWithoutUserInput> | todoCreateWithoutUserInput[] | todoUncheckedCreateWithoutUserInput[]
     connectOrCreate?: todoCreateOrConnectWithoutUserInput | todoCreateOrConnectWithoutUserInput[]
@@ -5111,6 +5232,20 @@ export namespace Prisma {
     update?: todoUpdateWithWhereUniqueWithoutUserInput | todoUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: todoUpdateManyWithWhereWithoutUserInput | todoUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: todoScalarWhereInput | todoScalarWhereInput[]
+  }
+
+  export type categoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput> | categoryCreateWithoutUserInput[] | categoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: categoryCreateOrConnectWithoutUserInput | categoryCreateOrConnectWithoutUserInput[]
+    upsert?: categoryUpsertWithWhereUniqueWithoutUserInput | categoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: categoryCreateManyUserInputEnvelope
+    set?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    disconnect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    delete?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    connect?: categoryWhereUniqueInput | categoryWhereUniqueInput[]
+    update?: categoryUpdateWithWhereUniqueWithoutUserInput | categoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: categoryUpdateManyWithWhereWithoutUserInput | categoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: categoryScalarWhereInput | categoryScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutTodoInput = {
@@ -5187,6 +5322,12 @@ export namespace Prisma {
     connect?: todoWhereUniqueInput | todoWhereUniqueInput[]
   }
 
+  export type UserCreateNestedOneWithoutCategoryInput = {
+    create?: XOR<UserCreateWithoutCategoryInput, UserUncheckedCreateWithoutCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCategoryInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type todoUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<todoCreateWithoutCategoryInput, todoUncheckedCreateWithoutCategoryInput> | todoCreateWithoutCategoryInput[] | todoUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: todoCreateOrConnectWithoutCategoryInput | todoCreateOrConnectWithoutCategoryInput[]
@@ -5204,6 +5345,14 @@ export namespace Prisma {
     update?: todoUpdateWithWhereUniqueWithoutCategoryInput | todoUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: todoUpdateManyWithWhereWithoutCategoryInput | todoUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: todoScalarWhereInput | todoScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCategoryNestedInput = {
+    create?: XOR<UserCreateWithoutCategoryInput, UserUncheckedCreateWithoutCategoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCategoryInput
+    upsert?: UserUpsertWithoutCategoryInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCategoryInput, UserUpdateWithoutCategoryInput>, UserUncheckedUpdateWithoutCategoryInput>
   }
 
   export type todoUncheckedUpdateManyWithoutCategoryNestedInput = {
@@ -5392,6 +5541,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type categoryCreateWithoutUserInput = {
+    id?: string
+    name: string
+    todo?: todoCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoryUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    todo?: todoUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type categoryCreateOrConnectWithoutUserInput = {
+    where: categoryWhereUniqueInput
+    create: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type categoryCreateManyUserInputEnvelope = {
+    data: categoryCreateManyUserInput | categoryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type todoUpsertWithWhereUniqueWithoutUserInput = {
     where: todoWhereUniqueInput
     update: XOR<todoUpdateWithoutUserInput, todoUncheckedUpdateWithoutUserInput>
@@ -5421,11 +5592,37 @@ export namespace Prisma {
     userId?: StringFilter<"todo"> | string
   }
 
+  export type categoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: categoryWhereUniqueInput
+    update: XOR<categoryUpdateWithoutUserInput, categoryUncheckedUpdateWithoutUserInput>
+    create: XOR<categoryCreateWithoutUserInput, categoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type categoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: categoryWhereUniqueInput
+    data: XOR<categoryUpdateWithoutUserInput, categoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type categoryUpdateManyWithWhereWithoutUserInput = {
+    where: categoryScalarWhereInput
+    data: XOR<categoryUpdateManyMutationInput, categoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type categoryScalarWhereInput = {
+    AND?: categoryScalarWhereInput | categoryScalarWhereInput[]
+    OR?: categoryScalarWhereInput[]
+    NOT?: categoryScalarWhereInput | categoryScalarWhereInput[]
+    id?: StringFilter<"category"> | string
+    name?: StringFilter<"category"> | string
+    userId?: StringFilter<"category"> | string
+  }
+
   export type UserCreateWithoutTodoInput = {
     id?: string
     name: string
     email: string
     password: string
+    category?: categoryCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTodoInput = {
@@ -5433,6 +5630,7 @@ export namespace Prisma {
     name: string
     email: string
     password: string
+    category?: categoryUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTodoInput = {
@@ -5443,11 +5641,13 @@ export namespace Prisma {
   export type categoryCreateWithoutTodoInput = {
     id?: string
     name: string
+    user: UserCreateNestedOneWithoutCategoryInput
   }
 
   export type categoryUncheckedCreateWithoutTodoInput = {
     id?: string
     name: string
+    userId: string
   }
 
   export type categoryCreateOrConnectWithoutTodoInput = {
@@ -5471,6 +5671,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    category?: categoryUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTodoInput = {
@@ -5478,6 +5679,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    category?: categoryUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type categoryUpsertWithWhereUniqueWithoutTodoInput = {
@@ -5494,14 +5696,6 @@ export namespace Prisma {
   export type categoryUpdateManyWithWhereWithoutTodoInput = {
     where: categoryScalarWhereInput
     data: XOR<categoryUpdateManyMutationInput, categoryUncheckedUpdateManyWithoutTodoInput>
-  }
-
-  export type categoryScalarWhereInput = {
-    AND?: categoryScalarWhereInput | categoryScalarWhereInput[]
-    OR?: categoryScalarWhereInput[]
-    NOT?: categoryScalarWhereInput | categoryScalarWhereInput[]
-    id?: StringFilter<"category"> | string
-    name?: StringFilter<"category"> | string
   }
 
   export type todoCreateWithoutCategoryInput = {
@@ -5529,6 +5723,27 @@ export namespace Prisma {
     create: XOR<todoCreateWithoutCategoryInput, todoUncheckedCreateWithoutCategoryInput>
   }
 
+  export type UserCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    todo?: todoCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    todo?: todoUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCategoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCategoryInput, UserUncheckedCreateWithoutCategoryInput>
+  }
+
   export type todoUpsertWithWhereUniqueWithoutCategoryInput = {
     where: todoWhereUniqueInput
     update: XOR<todoUpdateWithoutCategoryInput, todoUncheckedUpdateWithoutCategoryInput>
@@ -5545,6 +5760,33 @@ export namespace Prisma {
     data: XOR<todoUpdateManyMutationInput, todoUncheckedUpdateManyWithoutCategoryInput>
   }
 
+  export type UserUpsertWithoutCategoryInput = {
+    update: XOR<UserUpdateWithoutCategoryInput, UserUncheckedUpdateWithoutCategoryInput>
+    create: XOR<UserCreateWithoutCategoryInput, UserUncheckedCreateWithoutCategoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCategoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCategoryInput, UserUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type UserUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    todo?: todoUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    todo?: todoUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type todoCreateManyUserInput = {
     id?: string
     title: string
@@ -5552,6 +5794,11 @@ export namespace Prisma {
     status?: $Enums.status
     expireDate: Date | string
     priority: $Enums.priority
+  }
+
+  export type categoryCreateManyUserInput = {
+    id?: string
+    name: string
   }
 
   export type todoUpdateWithoutUserInput = {
@@ -5583,19 +5830,39 @@ export namespace Prisma {
     priority?: EnumpriorityFieldUpdateOperationsInput | $Enums.priority
   }
 
+  export type categoryUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    todo?: todoUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type categoryUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    todo?: todoUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type categoryUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
   export type categoryUpdateWithoutTodoInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutCategoryNestedInput
   }
 
   export type categoryUncheckedUpdateWithoutTodoInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type categoryUncheckedUpdateManyWithoutTodoInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type todoUpdateWithoutCategoryInput = {
