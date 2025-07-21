@@ -4735,13 +4735,13 @@ export namespace Prisma {
   export type categoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     name?: string
+    userId?: string
     AND?: categoryWhereInput | categoryWhereInput[]
     OR?: categoryWhereInput[]
     NOT?: categoryWhereInput | categoryWhereInput[]
-    userId?: StringFilter<"category"> | string
     todo?: TodoListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id" | "name">
+  }, "id" | "name" | "userId">
 
   export type categoryOrderByWithAggregationInput = {
     id?: SortOrder

@@ -39,7 +39,7 @@ model category {
   id     String @id @default(uuid())
   name   String @unique
   todo   todo[]
-  userId String
+  userId String @unique
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 

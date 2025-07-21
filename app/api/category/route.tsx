@@ -10,7 +10,7 @@ export async function GET() {
   if (userId)
     try {
       const Categories = await prisma.category.findMany({
-        where: {id: userId},
+        where: {userId: userId},
         include: {todo: true}
       });
       const NumberOfTasks = Categories.map(item => {

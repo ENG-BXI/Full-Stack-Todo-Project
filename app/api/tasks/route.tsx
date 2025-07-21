@@ -13,7 +13,7 @@ export async function GET() {
   if (!userId) return NextResponse.json({message: 'Cant Find User id', status: 400}, {status: 400});
   try {
     todo = await prisma.todo.findMany({
-      where: {id: userId},
+      where: {userId: userId},
       include: {
         category: true,
         user: true
