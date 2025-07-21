@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
         data: {
           email: evt.data.email_addresses[0].email_address,
           name: `${evt.data.first_name} ${evt.data.last_name}`,
+          clerk_id: evt.data.id,
           password: ''
         }
       });
