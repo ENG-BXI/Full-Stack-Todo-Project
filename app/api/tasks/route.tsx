@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     const {userId} = await auth();
     if (!userId) return NextResponse.json({message: 'Cannot Find UserID'}, {status: 400});
 
-    const user = await prisma.user.findUnique({where: {clerk_id: userId}});
+    const user = await prisma.user.findUnique({where: {id: userId}});
     const category = formData.category.map(item => {
       const data: ICategory = {
         id: item.id,
