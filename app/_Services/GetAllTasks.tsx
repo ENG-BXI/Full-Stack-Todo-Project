@@ -5,6 +5,8 @@ const getAllTasks = async () => {
   const response = await fetch(location.origin + '/api/tasks');
   const data = await response.json();
   const tasks = data.todo as ITodo[];
+  console.log(data);
+  
   return tasks;
 };
 const GetAllTasks = () => {

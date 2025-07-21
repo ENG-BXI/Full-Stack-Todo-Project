@@ -1,6 +1,7 @@
-import {Home, PaperclipIcon, Plus} from 'lucide-react';
+import {Home, LogOut, PaperclipIcon, Plus} from 'lucide-react';
 import {Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem} from './shadCn/sidebar';
 import Link from 'next/link';
+import {SignOutButton} from '@clerk/nextjs';
 
 const SideBar = () => {
   return (
@@ -33,6 +34,15 @@ const SideBar = () => {
                       <PaperclipIcon />
                       <span>Categories</span>
                     </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem className='cursor-pointer'>
+                  <SidebarMenuButton asChild>
+                    <SignOutButton>
+                      <span>
+                        <LogOut /> Sign Out
+                      </span>
+                    </SignOutButton>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>

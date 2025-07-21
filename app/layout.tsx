@@ -1,12 +1,9 @@
 import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
-
+import {ClerkProvider} from '@clerk/nextjs';
 import ReactQueryProvider from './_lib/ReactQueryProvider';
-import Header from './_Components/Header';
 import {Toaster} from 'sonner';
-import SideBar from './_Components/SideBar';
-import {SidebarProvider} from './_Components/shadCn/sidebar';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -27,19 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen! overflow-x-hidden`}>
-        <ReactQueryProvider>
-          <SidebarProvider>
-            <SideBar />
-            <main className='w-screen px-3'>
-              <Header />
-              {children}
-            </main>
-          </SidebarProvider>
-        </ReactQueryProvider>
-        <Toaster />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang='en'>
+        <body className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen! overflow-x-hidden`}>
+          <ReactQueryProvider>
+            <>{children}</>
+          </ReactQueryProvider>
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
