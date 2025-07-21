@@ -3,6 +3,7 @@ import {PrismaClient} from '@/app/generated/prisma';
 import {NextRequest, NextResponse} from 'next/server';
 import {IGetTaskById} from './[id]/route';
 import {config} from '../api-config';
+import {auth} from '@clerk/nextjs/server';
 
 export {config};
 export async function GET() {
@@ -28,6 +29,10 @@ export async function POST(req: NextRequest) {
     if (!formData.title || !formData.priority || !formData.expireDate || !formData.description || !formData.category) return NextResponse.json({message: 'form data is Not valid'}, {status: 400});
 
     const prisma = new PrismaClient();
+    const {userId} = await auth();
+    if (!userId) return NextResponse.json({message: 'Cannot Find UserID'}, {status: 400});
+
+    const user = await prisma.user.findUnique({where: {clerk_id: userId}});
     const category = formData.category.map(item => {
       const data: ICategory = {
         id: item.id,
@@ -37,7 +42,7 @@ export async function POST(req: NextRequest) {
     });
     const newTask = await prisma.todo.create({
       data: {
-        userId: 'fd8d5e20-c67d-4444-8c63-7b4425db85e6',
+        userId: user!.id,
         title: formData.title,
         description: formData.description,
         expireDate: new Date(formData.expireDate),
