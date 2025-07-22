@@ -11,7 +11,8 @@ export async function GET() {
     try {
       const Categories = await prisma.category.findMany({
         where: {userId: userId},
-        include: {todo: true}
+        include: {todo: true},
+        orderBy: {name: 'asc'}
       });
       const NumberOfTasks = Categories.map(item => {
         return item.todo.length;

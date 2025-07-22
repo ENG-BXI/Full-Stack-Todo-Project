@@ -84,7 +84,7 @@ export async function PATCH(req: NextRequest, {params}: {params: Promise<{id: st
       data: {
         title: task.title,
         category: {
-          connect: category
+          set: category
         },
         description: task.description,
         expireDate: task.expireDate,
