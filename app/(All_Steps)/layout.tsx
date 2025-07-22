@@ -1,3 +1,4 @@
+'use client';
 import React, {ReactNode} from 'react';
 import {SidebarProvider} from '../_Components/shadCn/sidebar';
 import SideBar from '../_Components/SideBar';
