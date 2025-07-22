@@ -4,6 +4,7 @@ import './globals.css';
 import {ClerkProvider} from '@clerk/nextjs';
 import ReactQueryProvider from './_lib/ReactQueryProvider';
 import {Toaster} from 'sonner';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin']
@@ -23,13 +24,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient({defaultOptions: {queries: {refetchOnWindowFocus: false}}});
   return (
     <ClerkProvider>
       <html lang='en'>
         <body className={`${geistSans.variable} ${geistMono.variable} h-screen w-screen! overflow-x-hidden`}>
-          <ReactQueryProvider>
+          <QueryClientProvider client={queryClient}>
             <>{children}</>
-          </ReactQueryProvider>
+          </QueryClientProvider>
           <Toaster />
         </body>
       </html>
