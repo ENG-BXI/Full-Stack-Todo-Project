@@ -4,6 +4,7 @@ import {Card, CardContent, CardHeader, CardTitle} from '../_Components/shadCn/ca
 import TodoList from '../_Components/TodoList';
 import Link from 'next/link';
 import {SearchTaskInput} from '../_Components/SearchTaskForm';
+import {Suspense} from 'react';
 // import {PrismaClient} from './generated/prisma';
 
 const page = async () => {
@@ -30,7 +31,9 @@ const page = async () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <TodoList />
+          <Suspense>
+            <TodoList />
+          </Suspense>
         </CardContent>
       </Card>
     </div>
