@@ -10,9 +10,9 @@ const Page = () => {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className='flex gap-4 sm:justify-between items-stretch flex-col sm:flex-row'>
         <CardTitle>Categories {isLoading && !isError ? <Loader2 className='w-4 h-4 animate-spin inline' /> : data?.categories?.length}</CardTitle>
-        <CardAction>
+        <CardAction className='w-full sm:w-min'>
           <AddCategoryButton />
         </CardAction>
       </CardHeader>

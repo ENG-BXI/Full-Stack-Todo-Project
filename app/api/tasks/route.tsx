@@ -10,8 +10,14 @@ export async function GET(req: NextRequest) {
   const searchParams = await req.nextUrl.searchParams;
   const page = parseInt(searchParams.get('page') ?? '1');
   const limit = parseInt(searchParams.get('limit') ?? '5');
+  const search = searchParams.get('search') || '';
+  const sort = searchParams.get('sort');
+  const order = searchParams.get('order');
+  let orderBy = {};
+  if (sort) orderBy = {[sort]: order || 'asc'};
+  else orderBy = [{priority: 'asc'}, {expireDate: 'asc'}];
   let numberOfPages: number = 0;
-  const prisma = await new PrismaClient();
+  const prisma = new PrismaClient();
   const {userId} = await auth();
 
   const skip = (page - 1) * limit;
@@ -19,22 +25,28 @@ export async function GET(req: NextRequest) {
   if (!userId) return NextResponse.json({message: 'Cant Find User id', status: 400}, {status: 400});
   try {
     todo = await prisma.todo.findMany({
-      where: {userId: userId},
+      where: {
+        AND: [{userId: userId}, {OR: [{title: {contains: search, mode: 'insensitive'}}, {description: {contains: search, mode: 'insensitive'}}]}]
+      },
       skip,
       take: limit,
       include: {
-        category: true,
+        category: {orderBy: sort === 'category' ? {name: 'asc'} : {}},
         user: true
       },
-      orderBy: [{priority: 'asc'}, {expireDate: 'asc'}]
+      orderBy: sort !== 'category' ? orderBy : {}
     });
-    const countTodo = await prisma.todo.count({where: {userId}});
+
+    const countTodo = await prisma.todo.count({
+      where: {
+        AND: [{userId: userId}, {OR: [{title: {contains: search, mode: 'insensitive'}}, {description: {contains: search, mode: 'insensitive'}}]}]
+      }
+    });
     numberOfPages = Math.ceil(countTodo / limit);
+    return NextResponse.json({status: 200, todo, numberOfPages});
   } catch (error) {
     return NextResponse.json({status: 400, error});
   }
-
-  return NextResponse.json({status: 200, todo, numberOfPages});
 }
 
 export async function POST(req: NextRequest) {

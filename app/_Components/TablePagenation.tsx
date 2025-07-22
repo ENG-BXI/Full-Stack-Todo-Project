@@ -4,8 +4,8 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from './s
 
 const TablePagination = ({setPage, page, setLimit, limit, numberOfPage}: {setPage: React.Dispatch<React.SetStateAction<number>>; page: number; setLimit: React.Dispatch<React.SetStateAction<number>>; limit: number; numberOfPage?: number}) => {
   return (
-    <div className='flex items-center justify-center mt-10 mx-10'>
-      <div className='flex items-center gap-x-3 text-nowrap'>
+    <div className='flex  flex-col sm:flex-row gap-y-2 items-center justify-center mt-10 mx-10'>
+      <div className='order-2 sm:order-2 flex items-center gap-x-3 text-nowrap'>
         Number Of Row
         <Select defaultValue={limit.toString()} onValueChange={e => setLimit(+e)}>
           <SelectTrigger>
@@ -18,7 +18,7 @@ const TablePagination = ({setPage, page, setLimit, limit, numberOfPage}: {setPag
           </SelectContent>
         </Select>
       </div>
-      <Pagination className='w-20!'>
+      <Pagination className='order-1 sm:order-2 w-20!'>
         <PaginationContent>
           <PaginationItem
             className='cursor-pointer'

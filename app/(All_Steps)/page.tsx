@@ -1,9 +1,9 @@
 import {Plus} from 'lucide-react';
 import {Button} from '../_Components/shadCn/button';
 import {Card, CardContent, CardHeader, CardTitle} from '../_Components/shadCn/card';
-import {Input} from '../_Components/shadCn/input';
 import TodoList from '../_Components/TodoList';
 import Link from 'next/link';
+import {SearchTaskInput} from '../_Components/SearchTaskForm';
 // import {PrismaClient} from './generated/prisma';
 
 const page = async () => {
@@ -19,10 +19,10 @@ const page = async () => {
         <CardHeader>
           <CardTitle className='flex flex-col gap-y-4'>
             <h1>ToDo App</h1>
-            <div className='flex gap-x-2'>
-              <Input className='' placeholder='Search' />
+            <div className='flex flex-col sm:flex-row items-stretch gap-2'>
+              <SearchTaskInput />
               <Link href='/add-task'>
-                <Button className='cursor-pointer'>
+                <Button className='cursor-pointer w-full'>
                   <Plus /> Add Task
                 </Button>
               </Link>

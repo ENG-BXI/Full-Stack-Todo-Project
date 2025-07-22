@@ -23,6 +23,7 @@ export async function DELETE(_req: NextRequest, {params}: {params: Promise<{id: 
   const {id} = await params;
   const prisma = new PrismaClient();
   try {
+    await prisma.todo.deleteMany({where: {category: {every: {id}}}});
     const deletedCategory = await prisma.category.delete({
       where: {id}
     });

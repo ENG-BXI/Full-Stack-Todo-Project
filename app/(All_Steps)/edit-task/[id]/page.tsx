@@ -22,6 +22,8 @@ const Page = () => {
   const {userId} = useAuth();
   const route = useRouter();
   const [title, setTitle] = useState('');
+  const [accept, setAccept] = useState(false);
+
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState<SelectedItems[]>([]);
   const [categoryOption, setCategoryOption] = useState<SelectedItems[]>([]);
@@ -41,8 +43,9 @@ const Page = () => {
   const {mutate: editTask, isPending} = EditTask();
   function handleOnClick(e: FormEvent) {
     e.preventDefault();
+    setAccept(true);
     if (!userId) return;
-    if (!title && !description && !category && !priority && !expireDate) return;
+    if (!title || !description || !category || !priority || !expireDate) return;
     const formData: ITaskWithSelectedCategory = {
       title,
       category,
@@ -59,20 +62,23 @@ const Page = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Add New Task</CardTitle>
+        <CardTitle>Edit Task {taskData?.title}</CardTitle>
       </CardHeader>
       <CardContent className='flex flex-col gap-y-3'>
         <form onSubmit={handleOnClick}>
           <label>
             Title*
             <Input value={title} onChange={e => setTitle(e.target.value)} />
+            {accept && !title && <p className='text-red-500'>Enter Title Please</p>}
           </label>
           <label>
             Description
             <Input value={description} onChange={e => setDescription(e.target.value)} />
+            {accept && !description && <p className='text-red-500'>Enter Description Please</p>}
           </label>
           <label>Category</label>
           <MultiSelect SelectedOptions={categoryOption} Selected={category} SelectLabel='Category' setValues={setCategory} />
+          {accept && category.length == 0 && <p className='text-red-500'>Select Category Please</p>}
           <label>
             Priority
             <Select value={priority} onValueChange={(value: 'low' | 'medium' | 'high') => setPriority(value)}>
@@ -85,6 +91,7 @@ const Page = () => {
                 <SelectItem value='low'>low</SelectItem>
               </SelectContent>
             </Select>
+            {accept && !priority && <p className='text-red-500'>Enter Priority Please</p>}
           </label>
           <label>
             Expire Date <br />
@@ -99,6 +106,7 @@ const Page = () => {
                 <Calendar mode='single' selected={expireDate!} onSelect={setExpireDate} />
               </PopoverContent>
             </Popover>
+            {accept && !expireDate && <p className='text-red-500'>Enter ExpireDate Please</p>}
           </label>
           <div className='flex justify-end gap-x-2 mt-4'>
             <Button disabled={isPending}>{isPending ? 'loading' : 'Done'}</Button>

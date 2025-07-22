@@ -10,9 +10,15 @@ const AddCategoryButton = () => {
   const [name, setName] = useState('');
   const [open, setOpen] = useState(false);
   const {mutate: addCategory, isPending} = AddNewCategory();
+  function handleOnClick() {
+    if (!name) return;
+    addCategory(name);
+    setName('');
+    setOpen(false);
+  }
   return (
     <Dialog open={open} onOpenChange={val => setOpen(val)}>
-      <DialogTrigger asChild>
+      <DialogTrigger className='w-full' asChild>
         <Button>Add New Category</Button>
       </DialogTrigger>
 
@@ -23,14 +29,7 @@ const AddCategoryButton = () => {
           Category Name
           <Input value={name} onChange={e => setName(e.target.value)} />
         </label>
-        <Button
-          disabled={isPending}
-          onClick={() => {
-            addCategory(name);
-            setName('');
-            setOpen(false);
-          }}
-        >
+        <Button disabled={isPending} onClick={handleOnClick}>
           {isPending ? <Loader2 className='animate-spin' /> : 'Add ' + name}
         </Button>
       </DialogContent>

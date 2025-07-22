@@ -3,11 +3,11 @@ import {Button} from '@/app/_Components/shadCn/button';
 import TableActionButton from './TableActionButton';
 import {useRouter} from 'next/navigation';
 import TaskStatusInTable from './TaskStatusInTable';
-import { Card, CardAction, CardContent, CardHeader, CardTitle } from './shadCn/card';
+import {Card, CardAction, CardContent, CardHeader, CardTitle} from './shadCn/card';
 import DeleteCategoryButton from './DeleteCategoryButton';
 import EditCategoryButton from './EditCategoryButton';
 import {TableHeader, TableRow, TableHead, TableBody, TableCell, Table} from './shadCn/table';
-import { Badge } from './shadCn/badge';
+import {Badge} from './shadCn/badge';
 
 const CategoriesList = ({data, numberOfTasks, numberOfDoneTasks}: {data: ICategoryWithTask[]; numberOfTasks: number[]; numberOfDoneTasks: number[]}) => {
   const route = useRouter();
@@ -17,14 +17,14 @@ const CategoriesList = ({data, numberOfTasks, numberOfDoneTasks}: {data: ICatego
     data?.map((category, index) => {
       return (
         <Card key={category.id} className='mb-3'>
-          <CardHeader>
-            <CardTitle>
-              Category ( {category.name} ){' '}
+          <CardHeader className='flex flex-col justify-start items-start sm:flex-row sm:justify-between'>
+            <CardTitle className='flex flex-col sm:flex-row gap-3'>
+              Category ( {category.name} )
               <Badge>
                 Done {numberOfDoneTasks[index]} of {numberOfTasks[index]} Tasks
               </Badge>
             </CardTitle>
-            <CardAction>
+            <CardAction className=' flex gap-x-2 sm:gap-x-1 w-full sm:w-min'>
               <EditCategoryButton id={category.id} CategoryName={category.name} /> <DeleteCategoryButton id={category.id} />
             </CardAction>
           </CardHeader>

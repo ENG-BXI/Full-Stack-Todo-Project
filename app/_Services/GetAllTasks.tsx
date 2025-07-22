@@ -1,17 +1,23 @@
 import {useQuery} from '@tanstack/react-query';
 import {ITodo} from '../_Components/TodoList';
 
-const getAllTasks = async (page: number, limit: number) => {
-  const response = await fetch(location.origin + `/api/tasks?page=${page}&limit=${limit}`);
-  const data = await response.json();
-  const tasks = data.todo as ITodo[];
+const getAllTasks = async (page: number, limit: number, search: string, sort: string, order: string) => {
+  let apiRoute = location.origin + '/api/tasks/?';
+  if (sort !== '') apiRoute += `sort=${sort}&`;
+  if (search !== '') apiRoute += `search=${search}&`;
+  if (order !== '') apiRoute += `order=${order}&`;
 
-  return tasks;
+  apiRoute += `page=${page}&limit=${limit}`;
+
+  const response = await fetch(apiRoute);
+
+  const data = await response.json();
+  return data.todo as ITodo[];
 };
-const GetAllTasks = ({page, limit}: {page: number; limit: number}) => {
+const GetAllTasks = ({page, limit, search, sort, order}: {page: number; limit: number; search: string; sort: string; order: string}) => {
   return useQuery({
-    queryKey: ['GetAllTasks', page, limit],
-    queryFn: () => getAllTasks(page, limit)
+    queryKey: ['GetAllTasks', page, limit, search, sort, order],
+    queryFn: () => getAllTasks(page, limit, search, sort, order)
   });
 };
 
