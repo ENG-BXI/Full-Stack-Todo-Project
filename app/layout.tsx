@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin']
 });
+const queryClient = new QueryClient({defaultOptions: {queries: {refetchOnWindowFocus: false}}});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const queryClient = new QueryClient({defaultOptions: {queries: {refetchOnWindowFocus: false}}});
   return (
     <ClerkProvider>
       <html lang='en'>
